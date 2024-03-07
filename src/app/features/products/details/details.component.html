@@ -1,0 +1,63 @@
+
+<!-- Open Content -->
+<section class="bg-light">
+  <div class="container pb-5">
+    <div class="row">
+      <div class="col-lg-5 mt-5">
+        <div class="card mb-3">
+          <img
+            class="card-img img-fluid"
+            src="{{ product()?.image }}"
+            id="product-detail"
+          />
+        </div>
+      </div>
+      <!-- col end -->
+      <div class="col-lg-7 mt-5">
+        <div class="card">
+          <div class="card-body">
+            <h1 class="h2">{{ product()?.title }}</h1>
+            <p class="h3 py-2 text-2xl font-bold text-green-500">{{ product()?.price }} $</p>
+            <div class="flex mb-4">
+              <span class="flex items-center">
+                @for (star of starsArray; track index; let index = $index) {
+                <span [innerHTML]="generateSVG(index)"></span>
+                }
+    
+                <span class="ml-3 text-gray-600">
+                  {{ product()?.rating?.count }} reviews</span
+                >
+              </span>
+            </div>
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <h6>Categoria:</h6>
+              </li>
+              <li class="list-inline-item">
+                <p class="text-muted">
+                  <strong>{{ product()?.category }}</strong>
+                </p>
+              </li>
+            </ul>
+
+            <h6>Descripcion:</h6>
+            <p>{{ product()?.description }}</p>
+
+            <div class="col d-grid">
+              <button
+                (click)="onAddToCart()"
+                type="submit"
+                class="btn btn-success btn-lg mt-3"
+                name="submit"
+                value="addtocard"
+              >
+                Añadir al Carrito
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Close Content -->
